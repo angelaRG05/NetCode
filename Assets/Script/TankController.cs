@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class TankController : MonoBehaviour
+using Unity.Netcode;
+public class TankController : NetworkBehaviour
 {
     public float moveSpeed = 5f;
     public float rotationSpeed = 150f;
@@ -10,6 +10,7 @@ public class TankController : MonoBehaviour
 
     void Update()
     {
+        if(!IsOwner) return;
         // Giro W S
         float moveInput = Input.GetAxisRaw("Vertical");
         transform.Translate(Vector3.up * moveInput * moveSpeed * Time.deltaTime);
