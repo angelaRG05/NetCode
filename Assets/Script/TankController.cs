@@ -8,6 +8,10 @@ public class TankController : NetworkBehaviour
     // Pivote
     public Transform turret;
 
+    // Referencia al InputReader
+    [SerializeField]
+    private InputReader inputReader;
+
     void Update()
     {
         if(!IsOwner) return;
