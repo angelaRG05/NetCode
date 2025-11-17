@@ -7,10 +7,11 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 {
     private Controls controls;
     public event Action<bool> PrimaryFireEvent;
+    public event Action<Vector2> MoveEvent;
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        MoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnPrimaryFire(InputAction.CallbackContext context)
@@ -26,7 +27,7 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 
     private void OnEnable()
     {
-        if (controls != null)
+        if (controls == null)
         {
             controls = new Controls();
             controls.Player.SetCallbacks(this);

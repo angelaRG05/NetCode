@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 6900894333611662341}
   - component: {fileID: 4195032170719259254}
   - component: {fileID: 8361966451662652325}
+  - component: {fileID: 6910735174820633647}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3334822398216685408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a6f55938e72e047a63f04298f2aded, type: 3}
   m_Name: 
@@ -362,6 +363,19 @@ MonoBehaviour:
   moveSpeed: 3
   rotationSpeed: 100
   turret: {fileID: 2369092956467092966}
+  inputReader: {fileID: 11400000, guid: 997db9cccb2e208419b988d94833e98f, type: 2}
+--- !u!114 &6910735174820633647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334822398216685408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1524978715ef5948826fb7d308c5f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestScript
   inputReader: {fileID: 11400000, guid: 997db9cccb2e208419b988d94833e98f, type: 2}
 --- !u!1 &6700404159293191404
 GameObject:
