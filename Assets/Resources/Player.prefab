@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 137732124
+  GlobalObjectIdHash: 2751243359
   InScenePlacedSourceGlobalObjectIdHash: 2751243359
   DeferredDespawnTick: 0
   Ownership: 1
@@ -376,7 +376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1524978715ef5948826fb7d308c5f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestScript
+  ShowTopMostFoldoutHeaderGroup: 1
   inputReader: {fileID: 11400000, guid: 997db9cccb2e208419b988d94833e98f, type: 2}
+  speed: 0
+  move: 5
+  rotation: 150
+  turret: {fileID: 2369092956467092966}
 --- !u!1 &6700404159293191404
 GameObject:
   m_ObjectHideFlags: 0
