@@ -76,7 +76,7 @@ public class ProjectileLauncher : NetworkBehaviour
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out var rb))
         {
             // Importante en 2D usar "transform.up" en lugar de "transform.forward"
-            rb.velocity = direction * projectileSpeed;
+            rb.linearVelocity = direction * projectileSpeed;
         }
 
 
@@ -105,7 +105,7 @@ public class ProjectileLauncher : NetworkBehaviour
         if (projectileInstance.TryGetComponent<Rigidbody2D>(out var rb))
         {
             // Importante en 2D usar "transform.up" en lugar de "transform.forward"
-            rb.velocity = direction * projectileSpeed;
+            rb.linearVelocity = direction * projectileSpeed;
         }
 
         // Notificar a todos los clientes
@@ -119,6 +119,7 @@ public class ProjectileLauncher : NetworkBehaviour
         // Evita crear doble proyectil en quien disparo
         if (IsOwner) return; 
         SpawnDummyProjectile(spawnPos, direction);
+        muzzleFlash.SetActive(false);
     }
 
 
@@ -139,10 +140,10 @@ public class ProjectileLauncher : NetworkBehaviour
 
         if (Time.time < previousFireTime + (1f / fireRate))
         {
-            return; // Aún no ha pasado el tiempo suficiente para disparar
+            return; // Aï¿½n no ha pasado el tiempo suficiente para disparar
         }
 
-        // Si pasa la validación:
+        // Si pasa la validaciï¿½n:
         previousFireTime = Time.time;
         
         // 1. Crear proyectil local
