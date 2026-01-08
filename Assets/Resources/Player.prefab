@@ -300,7 +300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5897669425614101652}
+  m_Father: {fileID: 2369092956467092966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3334822398216685408
 GameObject:
@@ -339,7 +339,6 @@ Transform:
   m_Children:
   - {fileID: 2312179011524183475}
   - {fileID: 2369092956467092966}
-  - {fileID: 2144252424249330882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9180534616276108508
@@ -527,7 +526,7 @@ MonoBehaviour:
   playerCollider: {fileID: 3411516394150556819}
   projectileSpeed: 1
   fireRate: 1
-  muzzleFlashDuration: 0.8
+  muzzleFlashDuration: 0.2
 --- !u!1 &6700404159293191404
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +742,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2144252424249330882}
   - {fileID: 2016208293645626043}
   m_Father: {fileID: 5897669425614101652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

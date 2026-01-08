@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8538423875551250109}
   - component: {fileID: -1937609571241452693}
   - component: {fileID: 3252546384948643071}
+  - component: {fileID: 6313789958704724261}
   m_Layer: 6
   m_Name: ProjectileBase
   m_TagString: Untagged
@@ -58,3 +59,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lifetime
   lifetime: 2
+--- !u!114 &6313789958704724261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007478936396994822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a0b5c19e064f9439fbc38e753a5786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnGameObjectOnDestroy
+  prefab: {fileID: 3672812361346539996, guid: 2f8f3f271f4861c44b7b49bada08402a, type: 3}
