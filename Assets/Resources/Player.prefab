@@ -602,7 +602,7 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: 997db9cccb2e208419b988d94833e98f, type: 2}
   muzzleFlash: {fileID: 764926367246317338}
   playerCollider: {fileID: 3411516394150556819}
-  projectileSpeed: 1
+  projectileSpeed: 7
   fireRate: 1
   muzzleFlashDuration: 0.2
 --- !u!114 &7071058221687076070

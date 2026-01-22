@@ -88,7 +88,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
     // Creacion proyectil real server
     [ServerRpc]
-    private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
+    private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction, ServerRpcParams rpcParams = default)
     {
         // Instanciar el proyectil real
         GameObject projectileInstance = Instantiate(
@@ -106,6 +106,11 @@ public class ProjectileLauncher : NetworkBehaviour
         {
             // Importante en 2D usar "transform.up" en lugar de "transform.forward"
             rb.linearVelocity = direction * projectileSpeed;
+        }
+
+        if (projectileInstance.TryGetComponent<DealDamageOnContact>(out var dealDamage))
+        {
+            dealDamage.SetOwner(rpcParams.Receive.SenderClientId); // obtenemos id por parámetro
         }
 
         // Notificar a todos los clientes
