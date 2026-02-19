@@ -26,6 +26,7 @@ public class ApplicationController : MonoBehaviour
             Debug.Log("Iniciando como cliente/host...");
             Instantiate(hostPrefab);
             Instantiate(clientPrefab);
+
         }
     }
 }

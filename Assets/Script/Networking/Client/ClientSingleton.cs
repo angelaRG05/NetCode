@@ -41,6 +41,9 @@ namespace Networking.Client
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+            // Inicia automáticamente la lógica del cliente
+            _ = InitAsync();
+
         }
 
         // Crea ClientGameManager (logica del ciente)

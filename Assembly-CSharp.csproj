@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Networking\ApplicationController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\Script\Networking\Client\AuthenticationWrapper.cs" />
     <Compile Include="Assets\Script\Core\Combat\DealDamageOnContact.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
