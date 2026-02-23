@@ -27,7 +27,8 @@ namespace Networking.Host
             }
         }
 
-        private HostGameManager gameManager;
+        //private HostGameManager gameManager;
+        public HostGameManager GameManager { get; private set; }
 
         // Patron singleton + persistencia entre escenas
         private void Awake()
@@ -40,6 +41,11 @@ namespace Networking.Host
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // llamar a la logica de gamemanager
+            _ = InitAsync();
+
+            Debug.Log("HostSingleton inicializado");
         }
 
         // Método público asíncrono para inicializar el HostGameManager
@@ -47,8 +53,8 @@ namespace Networking.Host
         {
             Debug.Log("Inicializando HostSingleton...");
 
-            gameManager = new HostGameManager();
-            await gameManager.InitAsync();
+            GameManager = new HostGameManager();
+            await GameManager.InitAsync();
 
             Debug.Log("HostSingleton inicializado correctamente");
         }
