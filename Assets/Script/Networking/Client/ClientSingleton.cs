@@ -1,5 +1,6 @@
-using UnityEngine;
+using Networking.Host;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Networking.Client
 {
@@ -28,7 +29,7 @@ namespace Networking.Client
             }
         }
 
-        private ClienteGameManager gameManager;
+        public ClienteGameManager GameManager { get; private set; }
 
         // Patrón Singleton + mantiene en escenas
         private void Awake()
@@ -52,8 +53,8 @@ namespace Networking.Client
         {
             Debug.Log("Inicializando ClienteSingleton...");
 
-            gameManager = new ClienteGameManager();
-            await gameManager.InitAsync();
+            GameManager = new ClienteGameManager();
+            await GameManager.InitAsync();
 
             Debug.Log("ClienteSingleton inicializado correctamente");
         }

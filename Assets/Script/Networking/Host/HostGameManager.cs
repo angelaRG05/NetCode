@@ -39,6 +39,9 @@ namespace Networking.Host
             joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
             Debug.Log($"Join Code generado: {joinCode}");
 
+            // Asignar el joincode al HosSingleton 
+            HostSingleton.Instance.CurrentJoinCode = joinCode.ToUpper();
+
             // Obtener el transporte de Netcode (Unity Transport),componente que gestiona las conexiones de red
             var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
 

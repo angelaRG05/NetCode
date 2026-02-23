@@ -7,6 +7,7 @@ public class ApplicationController : MonoBehaviour
 {
     [SerializeField] private ClienteSingleton clientPrefab;
     [SerializeField] private HostSingleton hostPrefab;
+   
 
     private void Awake()
     {

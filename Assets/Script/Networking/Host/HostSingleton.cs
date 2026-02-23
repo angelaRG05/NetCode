@@ -6,6 +6,8 @@ namespace Networking.Host
     public class HostSingleton : MonoBehaviour
     {
         private static HostSingleton instance;
+        [SerializeField] public bool hostButtonPressed = false;
+        public string CurrentJoinCode { get; set; }
         // Si exista la devuleve; sino la busca en escena; Si no la encuentra muestra error
         public static HostSingleton Instance
         {
