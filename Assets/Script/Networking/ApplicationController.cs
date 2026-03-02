@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Networking.Client;
 using Networking.Host;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class ApplicationController : MonoBehaviour
     {
         // Persista entre escenas
         DontDestroyOnLoad(gameObject);
+             
 
         // Para detectar servidor dedicado
         bool isDedicatedServer = SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null;

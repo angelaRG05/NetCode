@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286e2f87a39db4d4a8606770b1f13087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
+  joinCodeField: {fileID: 0}
 --- !u!1 &1341981010
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +429,7 @@ GameObject:
   - component: {fileID: 1378991454}
   - component: {fileID: 1378991453}
   - component: {fileID: 1378991452}
+  - component: {fileID: 1378991455}
   m_Layer: 0
   m_Name: 'NetworkManager '
   m_TagString: Untagged
@@ -521,6 +523,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378991455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378991451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9827d109e3d7af34f8e37af4960040e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkManagerSingleton
 --- !u!1 &1782964559
 GameObject:
   m_ObjectHideFlags: 0

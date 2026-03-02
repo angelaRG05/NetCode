@@ -19,6 +19,8 @@ namespace Networking.Client
         {
             try
             {
+                Debug.Log($"UnityServices State: {UnityServices.State}");
+                Debug.Log($"Is Signed In: {Unity.Services.Authentication.AuthenticationService.Instance.IsSignedIn}");
                 // Unirse a la asignación existente con Join Code
                 allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
                 Debug.Log("Cliente unido al Relay correctamente");
@@ -34,8 +36,8 @@ namespace Networking.Client
                     allocation.AllocationIdBytes,         // ID de la asignación (bytes)
                     allocation.Key,                       // Clave de cifrado
                     allocation.ConnectionData,            // Datos de conexión del host
-                    allocation.ConnectionData,            // Datos de conexión del host (hostConnectionData)
-                    false                                  // Conexión segura (DTLS)
+                    allocation.HostConnectionData,            // Datos de conexión del host (hostConnectionData)
+                    true                                  // Conexión segura (DTLS)
                 );
 
                 // Iniciar cliente
