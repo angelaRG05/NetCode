@@ -43,17 +43,42 @@ namespace Networking.Host
             HostSingleton.Instance.CurrentJoinCode = joinCode.ToUpper();
 
             // Obtener el transporte de Netcode (Unity Transport),componente que gestiona las conexiones de red
-            var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            NetworkManager networkmanager = NetworkManager.Singleton;
+            if (networkmanager == null)
+            {
+                Debug.LogError("NetworkManager.Singleton es null, asegurate tener networkmaanger en el NetBoostrap");
+                return;
+            }
 
-            // Configurar manualmente el transporte para usar Relay; SIN usar el package deprecated de Relay
+            UnityTransport transport = networkmanager.GetComponent<UnityTransport>();
+
+            if(transport == null)
+            {
+                Debug.LogError("No se encontro UnityTransport en el mismo GameObject que el NetworkManager");
+                return;
+            }
+
+            // Configurar manualmente el transporte para usar Relay
+            string relayIp = allocation.RelayServer.IpV4;
+            ushort relayPort = (ushort)allocation.RelayServer.Port;
+
+            byte[] allocationIdBytes = allocation.AllocationIdBytes;
+            byte[] key = allocation.Key;
+            byte[] connectionData = allocation.ConnectionData;
+            byte[] hostConnectionData = allocation.ConnectionData;
+
+            bool isSecure = false;
+
+            Debug.Log("HOST Relay Config => IP: " + relayIp + " Port: " + relayPort + " Secure: " + isSecure);
+
             transport.SetRelayServerData(
-                allocation.RelayServer.IpV4,          // IP del servidor Relay
-                (ushort)allocation.RelayServer.Port,  // Puerto del servidor Relay
-                allocation.AllocationIdBytes,         // ID de la asignación (bytes)
-                allocation.Key,                       // Clave de cifrado
-                allocation.ConnectionData,            // Datos de conexión del host
-                allocation.ConnectionData,            // Datos de conexión del host (hostConnectionData)
-                true                                  // Conexión segura (DTLS)
+                relayIp,
+                relayPort,
+                allocationIdBytes,
+                key,
+                connectionData,
+                hostConnectionData,
+                isSecure
             );
 
             // Iniciar el modo Host, actúa como servidor + cliente local
