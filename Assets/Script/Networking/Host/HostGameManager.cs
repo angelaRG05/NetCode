@@ -5,6 +5,10 @@ using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
+using System.Collections.Generic;
+using System.Collections;
 
 
 namespace Networking.Host
@@ -16,6 +20,8 @@ namespace Networking.Host
 
         private Allocation allocation;
         private string joinCode;
+        private string lobbyId;
+
         public async Task InitAsync()
         {
             Debug.Log("Inicializando HostGameManager...");
@@ -38,6 +44,30 @@ namespace Networking.Host
             // Obtener el Join Code, se compartirá con los clientes
             joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
             Debug.Log($"Join Code generado: {joinCode}");
+
+            // Crear el lobby en Unity Lobby antes de arrancar el Host
+            try
+            {
+                CreateLobbyOptions lobbyOptions = new CreateLobbyOptions
+                {
+                    IsPrivate = false,
+                    Data = new Dictionary<string, DataObject>
+                    {
+                        {"JoinCode", new DataObject(DataObject.VisibilityOptions.Member, joinCode) }
+                    }
+                };
+
+                Lobby lobby = await LobbyService.Instance.CreateLobbyAsync("My Lobby", MAX_CONNECTIONS, lobbyOptions);
+                lobbyId = lobby.Id;
+
+                // Iniciar corrutina heartbeat cada 15s
+                HostSingleton.Instance.StartCoroutine(HeartbeatLobby(15f));
+
+            } catch (LobbyServiceException e)
+            {
+                Debug.Log(e.Message);
+                return;
+            }
 
             // Asignar el joincode al HosSingleton 
             HostSingleton.Instance.CurrentJoinCode = joinCode.ToUpper();
@@ -97,6 +127,26 @@ namespace Networking.Host
             );
 
             Debug.Log("Host iniciado correctamente con Relay");
+        }
+
+        private IEnumerator HeartbeatLobby(float waitTimeSeconds)
+        {
+            WaitForSecondsRealtime delay = new WaitForSecondsRealtime(waitTimeSeconds);
+            while (!string.IsNullOrEmpty(lobbyId))
+            {
+                var task = LobbyService.Instance.SendHeartbeatPingAsync(lobbyId);
+                while (!task.IsCompleted)
+                {
+                    yield return null;
+                }
+
+                if(task.Exception != null)
+                {
+                    Debug.LogError(task.Exception);
+                }
+                yield return delay;
+            }
+
         }
     }
 }
